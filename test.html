@@ -1,0 +1,12 @@
+<html>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8888/", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            "value" : "ssibal"
+        }));
+    </script>
+</body>
+</html>
