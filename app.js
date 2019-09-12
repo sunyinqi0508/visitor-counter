@@ -15,15 +15,17 @@ var firstrun = 1;
 app.post('/', function (request, response) {
     var ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
     if (firstrun) {
-        var buffer = fs.readFileSync('counter.txt',encoding = 'utf8', flag = 'r');
-        var _cnt = cnt;
-        try {
-            console.log(buffer.toString());
-            _cnt = parseInt(buffer.toString('utf-8'));
-        } catch (error) {
-        }
-        if (!isNaN(_cnt))
-            cnt = _cnt;
+	try{
+        	var buffer = fs.readFileSync('counter.txt',encoding = 'utf8', flag = 'r');
+	        var _cnt = cnt;
+	        try {
+	            console.log(buffer.toString());
+        	    _cnt = parseInt(buffer.toString('utf-8'));
+	        } catch (error) {
+        	}
+	        if (!isNaN(_cnt))
+        	    cnt = _cnt;
+	}catch(error){}
         firstrun = 0;
     }
     ++cnt;
@@ -44,4 +46,4 @@ app.post('/', function (request, response) {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     response.send()
 });
-app.listen(8888);
+app.listen(50895);
