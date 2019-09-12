@@ -1,8 +1,9 @@
 var express = require("express");
 var parser = require("body-parser");
 var fs = require("fs");
-var app = express();
+var time = require('time');
 
+var app = express();
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 app.get('/', function (request, response) {
@@ -38,7 +39,11 @@ app.post('/', function (request, response) {
         });
     };
     infwrite();
-    fs.appendFile('stats.txt', ip + '\t' + request.get('User-Agent') + '\n', function (err) {
+    var curr_time = new time.Date(Date.now());
+    curr_time.setTimezone('America/New_York');
+    
+    fs.appendFile('stats.txt', ip + '\t' + curr_time.toString() + 
+	    '\t' + request.get('User-Agent') + '\n', function (err) {
         if (err)
             console.log('write stats error! ' + err.message);
     });
