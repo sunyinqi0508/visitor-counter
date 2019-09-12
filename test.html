@@ -2,7 +2,7 @@
 <body>
     <script>
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://billsun.dev/stats", true);
+        xhr.open("POST", window.location.href + '/stats', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             "value" : "ssibal"

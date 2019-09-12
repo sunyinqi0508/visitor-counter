@@ -19,7 +19,7 @@ app.post('/', function (request, response) {
         	var buffer = fs.readFileSync('counter.txt',encoding = 'utf8', flag = 'r');
 	        var _cnt = cnt;
 	        try {
-	            console.log(buffer.toString());
+	          //  console.log(buffer.toString());
         	    _cnt = parseInt(buffer.toString('utf-8'));
 	        } catch (error) {
         	}
